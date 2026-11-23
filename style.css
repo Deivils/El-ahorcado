@@ -1,0 +1,42 @@
+*{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container{
+    margin-top: 50px;
+}
+
+#imagen {
+    border: 2px solid #000;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#palabra{
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#introducirLetra {
+    display: flex;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 20px 10px;
+}
+
+#letra{
+    width: 35px;
+    height: 35px;
+}
+
+#comprobar{
+    width: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    
+}
