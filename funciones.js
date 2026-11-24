@@ -36,7 +36,7 @@ export function cambiarImagen(i){
     imagenAbogado.src = "img/"+img
 }
 
-export function cambiarTexto(letra, array){
+export function cambiarTexto(){
     const verPalabra = document.getElementById("palabra")
     verPalabra.innerText = palabraMostrada
 }
