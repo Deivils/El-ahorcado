@@ -52,5 +52,11 @@ export function comprobarLetra() {
         }
 }
 
+export function validarLetra(e){
+    e.preventDefault();
+    const inputLetra = document.getElementById("introducirLetra")
+    return inputLetra
+}
+
 
 console.log(input_letra)
