@@ -1,6 +1,6 @@
 let palabras = []
 let secreta = ""
-
+let palabraMostrada = "________"
 
 export function cogerPalabras(){
     fetch("words.json")
@@ -20,7 +20,7 @@ export function cogerPalabras(){
     })
 }
 
-
+cogerPalabras()
 
 export function palabraAleatoria(){
 
@@ -30,6 +30,13 @@ export function palabraAleatoria(){
     console.log("Palabra secreta: " , secreta)
 }
 
+export function cambiarImagen(i){
+    const imagenAbogado = document.getElementById("imagen")
+    let img = "Hangman-"+toString(i)+".png"
+    imagenAbogado.src = "img/"+img
+}
 
-
-cogerPalabras()
+export function cambiarTexto(letra, array){
+    const verPalabra = document.getElementById("palabra")
+    verPalabra.innerText = palabraMostrada
+}
