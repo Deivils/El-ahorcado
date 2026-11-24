@@ -40,3 +40,17 @@ export function cambiarTexto(){
     const verPalabra = document.getElementById("palabra")
     verPalabra.innerText = palabraMostrada
 }
+
+export function comprobarLetra() {
+    const input_letra = document.getElementById("letra")
+    const palabra = document.getElementById("palabra")
+        for (let letra of secreta){
+            if(input_letra == letra){
+                palabraMostrada.indexOf(letra) == input_letra
+    }   
+
+        }
+}
+
+
+console.log(input_letra)
