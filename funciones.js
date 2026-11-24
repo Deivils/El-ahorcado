@@ -1,6 +1,7 @@
 let palabras = []
 let secreta = ""
-let numeroAleatorio = Math.floor(Math.random() * (palabras.length)) 
+
+
 export function cogerPalabras(){
     fetch("words.json")
     .then(function(resp){
@@ -8,8 +9,9 @@ export function cogerPalabras(){
         return resp.json()
     })
     .then(function(respJSON){
-        palabras = respJSON
-        console.log("palabras cogidas: ",palabras)  
+        palabras = respJSON.words
+        console.log("palabras cogidas: ", palabras)  
+        palabraAleatoria()
         
     })
     .catch(function(error){
@@ -18,14 +20,16 @@ export function cogerPalabras(){
     })
 }
 
-cogerPalabras()
+
 
 export function palabraAleatoria(){
-    
-    secreta = palabras[numeroAleatorio]
-    return secreta
+
+    if (palabras.length === 0) return
+    let numeroAleatorio = Math.floor(Math.random() * (palabras.length)) 
+    secreta = palabras[numeroAleatorio].item
+    console.log("Palabra secreta: " , secreta)
 }
 
 
 
-
+cogerPalabras()
