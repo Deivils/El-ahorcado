@@ -2,10 +2,13 @@
 const inputButtom = document.getElementById("comprobar")
 const verTexto = document.getElementById("")
 
+const imagenAbogado = document.getElementById("imagen")
+
 // FUNCION INPUT
 function inputLetra(e){
     e.preventDefault()
 
+    
 
 
 }
@@ -36,42 +39,33 @@ export function cogerPalabras(){
 
 cogerPalabras()
 
-export function palabraAleatoria(){
-
+function palabraAleatoria(){
     if (palabras.length === 0) return
     let numeroAleatorio = Math.floor(Math.random() * (palabras.length)) 
     palabraSecreta = palabras[numeroAleatorio].item
     console.log("Palabra palabraSecreta: " , palabraSecreta)
 }
 
-export function cambiarImagen(i){
-    const imagenAbogado = document.getElementById("imagen")
+function cambiarImagen(i){    
     let img = "Hangman-"+toString(i)+".png"
     imagenAbogado.src = "img/"+img
 }
 
-export function cambiarTexto(){
+function cambiarTexto(){
     const verPalabra = document.getElementById("palabra")
     verPalabra.innerText = palabraMostrada
 }
 
-export function comprobarLetra() {
+function comprobarLetra() {
     const input_letra = document.getElementById("letra")
     const palabra = document.getElementById("palabra")
         for (let letra of palabraSecreta){
             if(input_letra == letra){
                 palabraMostrada.indexOf(letra) == input_letra
-    }   
+        }   
 
-        }
+    }
 }
-
-export function validarLetra(e){
-    e.preventDefault();
-    const inputLetra = document.getElementById("introducirLetra")
-    return inputLetra
-}
-
 
 
 console.log(input_letra)
