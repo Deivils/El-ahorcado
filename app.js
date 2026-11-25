@@ -3,28 +3,7 @@ const inputButtom = document.getElementById("comprobar")
 const verTexto = document.getElementById("palabra")
 const imagenAbogado = document.getElementById("imagen")
 const input_letra = document.getElementById("letra")
-
-
-// FUNCIONES 
-let palabras = []
-let palabraSecreta = ""
-let palabraMostrada = "________"
-
-// FUNCION INPUT
-function inputLetra(e){
-    e.preventDefault()
-    if((!input_letra.value.match(/[a-z]/) || !input_letra.value.match(/[A-Z]/)) && input_letra.value.match(/\d/) && input_letra.length > 1){
-        console.log("MEC")
-    }else{
-        console.log("Letra aprobada")
-    }
-    input_letra = input_letra.toUpperCase()
-
-    palabraMostrada = comprobarLetra()
-
-}
-
-
+const subtitulo = document.getElementById("subtitulo")
 
 function cogerPalabras(){
     fetch("words.json")
@@ -46,6 +25,40 @@ function cogerPalabras(){
 
 cogerPalabras()
 
+
+let palabras = []
+let palabraSecreta = ""
+let palabraMostrada = "________"
+i = 0
+let win = false
+
+// FUNCION INPUT
+function inputLetra(e){
+    e.preventDefault()
+
+
+    if((input_letra.value.match(/[a-z]/) || input_letra.value.match(/[A-Z]/))  && input_letra.value.length == 1){
+        console.log("Letra aprobada")
+        i += 1
+        cambiarImagen(i)
+    }else{
+        console.log("MEC")
+        palabraMostrada = comprobarLetra()
+    }
+    
+    if(i == 8){
+        cambiarImagen(i)
+        subtitulo.style.color = "red"
+        subtitulo.innerText = "... SE HA COLGADO!!"
+    }
+
+    if(i < 8 && comprobarWin()){
+        subtitulo.style.color = "green"
+        subtitulo.innerText = "... SE HA SALVADO!!"
+    }
+}
+
+// FUNCIONES 
 function palabraAleatoria(){
     if (palabras.length === 0) return
     let numeroAleatorio = Math.floor(Math.random() * (palabras.length)) 
@@ -63,9 +76,7 @@ function cambiarTexto(){
     verPalabra.innerText = palabraMostrada
 }
 
-function comprobarLetra() {
-    
-
+function comprobarLetra() {  
     for (let letra of palabraSecreta){
         if(input_letra == letra){
             palabraMostrada.indexOf(letra) == input_letra
@@ -74,5 +85,13 @@ function comprobarLetra() {
     return palabraMostrada
 }
 
+function comprobarWin(){
+    for (let letra of palabraSecreta){
+        if(letra == "_"){
+            return false
+        }
+    }
+    return false
+}
 
 console.log(input_letra)
