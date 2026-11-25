@@ -16,8 +16,10 @@
             <p id="palabra">_ _ _ _ _ _ _ _</p>
         </div>
         <div id="introducirLetra">
-            <input type="text" name="" id="letra">
-            <input type="submit" value="Comprobar Letra" id="comprobar">
+            <form onsubmit="inputLetra(event)">
+                <input type="text" name="" id="letra">
+                <input type="submit" value="Comprobar Letra" id="comprobar">
+            </form>
         </div>
 
 
@@ -30,6 +32,6 @@
 
 
 
-    <script type="module" src="funciones.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
