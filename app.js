@@ -30,7 +30,6 @@ let palabras = []
 let palabraSecreta = ""
 let palabraMostrada = "________"
 i = 0
-let win = false
 
 // FUNCION INPUT
 function inputLetra(e){
@@ -39,11 +38,11 @@ function inputLetra(e){
 
     if((input_letra.value.match(/[a-z]/) || input_letra.value.match(/[A-Z]/))  && input_letra.value.length == 1){
         console.log("Letra aprobada")
-        palabraMostrada = comprobarLetra()
-        console.log(comprobarLetra())
+        /* palabraMostrada = comprobarLetra() */
+        console.log("comprobar letra: "+comprobarLetra())
         if(comprobarLetra()){
+            cambiarLetra()
             
-            palabraMostrada.indexOf(letra) == input_letra
         }else{
             i += 1
             cambiarImagen(i)
@@ -60,7 +59,8 @@ function inputLetra(e){
         subtitulo.innerText = "... SE HA COLGADO!!"
     }
 
-    if(i < 8 && comprobarWin()){
+    if(i < 8 && comprobarWin() == true){
+        console.log("comprobar win: "+comprobarWin())
         subtitulo.style.color = "green"
         subtitulo.innerText = "... SE HA SALVADO!!"
     }
@@ -85,21 +85,31 @@ function cambiarTexto(){
 }
 
 function comprobarLetra() {  
-    for (let letra of palabraSecreta){
-        if(input_letra == letra){
+    for (let n = 0; n = palabraSecreta.length; n++){
+        if(palabraSecreta.charAt(n) == input_letra.value){
             return true
-        }
-    }
-    return false
-}
-
-function comprobarWin(){
-    for (let letra of palabraSecreta){
-        if(letra == "_"){
+        }else{
             return false
         }
     }
-    return true
+}
+function cambiarLetra() {  
+    for (let n = 0; n = palabraSecreta.length; n++){
+        if(palabraSecreta.charAt(n) == input_letra.value){
+            palabraMostrada.charAt(n) == input_letra
+        }
+    }
+}
+
+
+function comprobarWin(){
+    for (let n = 0; n = palabraMostrada.length; n++){
+        if(palabraMostrada.charAt(n) == "_"){
+            return false
+        }else{
+            return true
+        }
+    }
 }
 
 console.log(input_letra)
