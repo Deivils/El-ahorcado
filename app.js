@@ -39,13 +39,21 @@ function inputLetra(e){
 
     if((input_letra.value.match(/[a-z]/) || input_letra.value.match(/[A-Z]/))  && input_letra.value.length == 1){
         console.log("Letra aprobada")
-        i += 1
-        cambiarImagen(i)
-    }else{
-        console.log("MEC")
         palabraMostrada = comprobarLetra()
+        console.log(comprobarLetra())
+        if(comprobarLetra()){
+            
+            palabraMostrada.indexOf(letra) == input_letra
+        }else{
+            i += 1
+            cambiarImagen(i)
+        }
+            
+
+    }else{
+        console.log("MEC")        
     }
-    
+
     if(i == 8){
         cambiarImagen(i)
         subtitulo.style.color = "red"
@@ -79,10 +87,10 @@ function cambiarTexto(){
 function comprobarLetra() {  
     for (let letra of palabraSecreta){
         if(input_letra == letra){
-            palabraMostrada.indexOf(letra) == input_letra
+            return true
         }
     }
-    return palabraMostrada
+    return false
 }
 
 function comprobarWin(){
@@ -91,7 +99,7 @@ function comprobarWin(){
             return false
         }
     }
-    return false
+    return true
 }
 
 console.log(input_letra)
