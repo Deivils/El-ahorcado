@@ -69,4 +69,5 @@ form {
 #reset{
     padding: 15px 30px;
     color: black;
+    display: none;
 }

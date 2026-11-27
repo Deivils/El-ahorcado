@@ -4,6 +4,7 @@ const verTexto = document.getElementById("palabra")
 const imagenAbogado = document.getElementById("imagen")
 const input_letra = document.getElementById("letra")
 const subtitulo = document.getElementById("subtitulo")
+const resetButton = document.getElementById("reset")
 
 function cogerPalabras(){
     fetch("words.json")
@@ -46,14 +47,22 @@ function inputLetra(e){
         if(comprobarLetra()){
             console.log("la letra esta repetida: "+letraRepetida())
             if(letraRepetida()){
-                alert("LETRA YA USADA")
+                Swal.fire({
+                    title: "¡Letra ya utilizada!",
+                    text: "Ya has ingresado la letra: "+input_letra.value.toUpperCase()+"!!",
+                    icon: "warning"
+                });
             }else{
                 cambiarLetra()
                 letraUsada()
             }            
         }else{
             if(letraRepetida()){
-                alert("LETRA YA USADA")
+                Swal.fire({
+                    title: "¡Letra ya utilizada!",
+                    text: "Ya has ingresado la letra: "+input_letra.value.toUpperCase()+"!!",
+                    icon: "warning"
+                });
             }else{
                 i += 1
                 cambiarImagen(i)
@@ -67,11 +76,13 @@ function inputLetra(e){
         cambiarImagen(i)
         subtitulo.style.color = "red"
         subtitulo.innerText = "... SE HA COLGADO!!"
+        resetButton.style.display = "block"
     }
     if(i < 8 && comprobarWin() == true){
         console.log("comprobar win: "+comprobarWin())
         subtitulo.style.color = "green"
         subtitulo.innerText = "... SE HA SALVADO!!"
+        resetButton.style.display = "block"
     }
     limpiarInputText()
 }
@@ -141,6 +152,7 @@ function limpiarInputText(){
     input_letra.value = ""
 }
 
+// FUNCION QUE COMPRUEBE QUE NO SE REPITEN LAS LETRAS EN EL INPUT
 // función para recoger las letras ya usadas
 function letraUsada(){
     letraUsadas.push(input_letra.value)
@@ -156,6 +168,9 @@ function letraRepetida(){
     return false
 }
 
-// FUNCION QUE COMPRUEBE QUE NO SE REPITEN LAS LETRAS EN EL INPUT
-
 // BOTON PARA REINICIAR LA PÁGINA
+function reiniciar(){
+    limpiarInputText()
+    cogerPalabras()
+    subtitulo.style.display = "none"
+}
