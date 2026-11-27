@@ -15,8 +15,7 @@ function cogerPalabras(){
     .then(function(respJSON){
         palabras = respJSON.words
         console.log("palabras cogidas: ", palabras)  
-        palabraAleatoria()
-        
+        palabraAleatoria()        
     })
     .catch(function(error){
         console.log(error)
