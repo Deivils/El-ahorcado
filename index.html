@@ -10,18 +10,18 @@
     
     <div class="container">
         <h1 id="titulo">El Abogado...</h1>
-        <h2 id="subtitulo">VACIO</h2>
-        <div id="imagen">
-            <img src="images/Hangman-0.png" alt="imagenPrincipal">
-            <p id="palabra">_ _ _ _ _ _ _ _</p>
+        <h2 id="subtitulo"></h2>
+        <div id="imagenes">
+            <img id="imagen" src="images/Hangman-0.png" alt="imagenPrincipal">
+            <p id="palabra"></p>
         </div>
         <div id="introducirLetra">
             <form onsubmit="inputLetra(event)">
-                <input type="text" name="" id="letra">
-                <input type="submit" value="Comprobar Letra" id="comprobar">
+                <input type="text" name="" id="letra" required>
+                <input type="submit" value="Comprobar Letra" id="comprobar"  >
             </form>
         </div>
-
+        <button id="reset" onclick="">Reiniciar</button>
 
     </div>
 
